@@ -1,0 +1,43 @@
+body, p, small{
+	font-family: 'sansation_lightregular';
+}
+b{
+	font-family: 'sansationbold';
+}
+p.texto-logo{
+	font-size: 10pt;
+	margin: 0px 0px 0px 20px;
+}
+div.banner{
+	margin-top: 2%;
+}
+.menu{
+	font-size: 10pt;
+}
+img.banner{
+	width: 100%;
+	height: 100%;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+@font-face {
+    font-family: 'sansation_lightregular';
+    src: url('../fonts/sansation_light-webfont.eot');
+    src: url('../fonts/sansation_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sansation_light-webfont.woff') format('woff'),
+         url('../fonts/sansation_light-webfont.ttf') format('truetype'),
+         url('../fonts/sansation_light-webfont.svg#sansation_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'sansationbold';
+    src: url('../fonts/sansation_bold-webfont.eot');
+    src: url('../fonts/sansation_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sansation_bold-webfont.woff') format('woff'),
+         url('../fonts/sansation_bold-webfont.ttf') format('truetype'),
+         url('../fonts/sansation_bold-webfont.svg#sansationbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

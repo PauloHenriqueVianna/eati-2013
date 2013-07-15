@@ -1,0 +1,14 @@
+{% extends "home_base.html" %}
+
+{% block titulo_bloco %}
+	<h1>Notícias <small>Últimas Novidades</small></h1>
+{% endblock %}
+
+{% block conteudo_bloco %}
+	{% for post in posts %}
+	<div class="span2">
+	    <h3><a href="{{ post.get_absolute_url }}">{{post.titulo}}</a></h3>
+	    <p>Criado em {{post.criado_em}}</p>
+	</div>
+	{% endfor %}
+{% endblock %}
