@@ -41,3 +41,33 @@ img.banner{
     font-weight: normal;
     font-style: normal;
 }
+
+.ideia{
+    width: 160px;
+    height: 120px;
+    background-image: url("../img/teste-1.png");
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.ideia:hover{
+    background-image: url("../img/teste-2.png");
+}
+
+.ideia-menor{
+    width: 60px;
+    height: 55px;
+    background-image: url("../img/teste-1-menor.png");
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.ideia-menor:hover{
+    background-image: url("../img/teste-2-menor.png");
+}
