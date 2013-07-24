@@ -21,4 +21,6 @@ urlpatterns = patterns('',
 
     #tinymce
     (r'^tinymce/', include('tinymce.urls')),
+
+    url(r'^contato/', include('contato.urls')),
 )

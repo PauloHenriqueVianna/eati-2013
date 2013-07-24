@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+
+{% block title %}Apoio{% endblock %}
+
+{% block conteudo %}
+	
+	<div class="container">
+        <div class="row-fluid">
+            <div class="span12">            	
+                <div class="page-header">
+	                <h1>Apoio <small>Apoie o EATI</small></h1>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+        	<div class="span6">
+        		{% if enviado %}
+        			{% if enviado == 1 %}
+        		<div class="alert alert-success">Contato enviado com sucesso, em breve retornaremos.</div>
+        			{% else %}
+        		<div class="alert alert-error">Ocorreu um erro ao tentar enviar a mensagem, por favor, tente novamente.</div>
+        			{% endif %}
+        		{% endif %}
+        		<form id="support" name="support" action="http://localhost:8000/contato/enviar/" method="POST">
+        		  {% csrf_token %}
+				  <fieldset>
+				  	<div class="control-group">
+					    <label for="name">Nome:</label>
+					    <input id="name" name="name" type="text" class="input-block-level" placeholder="Digite seu nome" value="{% if nome %}{{ nome }}{% endif %}">
+					    <span class="help-block"></span>
+				    </div>
+				    <div class="control-group">
+					    <label for="company">Empresa:</label>
+					    <input id="company" name="company" type="text" class="input-block-level" placeholder="Digite o nome da empresa representada" value="{% if empresa %}{{ empresa }}{% endif %}">
+					    <span class="help-block"></span>
+					</div>
+					<div class="control-group">
+					    <label for="email">E-mail:</label>
+					    <input id="email" name="email" type="text" class="input-block-level" placeholder="Digite o endereço de e-mail para contato" value="{% if email %}{{ email }}{% endif %}">
+					    <span class="help-block"></span>
+					</div>
+					<div class="control-group">
+					    <label for="message">Mensagem:</label>
+					    <textarea id="message" name="message" class="input-block-level" rows="8">{% if mensagem %}{{ mensagem }}{% endif %}</textarea>
+					    <span class="help-block"></span>
+					</div>
+				    <div class="row-fluid">
+				    	<button type="submit" class="span12 btn">Enviar</button>
+					</div>
+				  </fieldset>
+				</form>
+        	</div>
+        	<div class="span6"><p>Ajude a fortaler o Encontro Anual de Tecnologia da Informação, entre em contato conosco pelo formulário ao lado para obter mais informações.</p></div>
+        </div>
+    </div>
+	
+{% endblock %}

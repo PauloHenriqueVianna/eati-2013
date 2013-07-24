@@ -1,4 +1,4 @@
-body, p, small{
+body, p, small, input{
 	font-family: 'sansation_lightregular';
 }
 b{
@@ -70,4 +70,11 @@ img.banner{
 
 .ideia-menor:hover{
     background-image: url("../img/teste-2-menor.png");
+}
+
+label.valid {
+  display: none !important;
+}
+label.error {
+  display: none !important;
 }
