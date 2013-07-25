@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 
-{% block title %}Apoio{% endblock %}
+{% block title %}Fale Conosco{% endblock %}
 
 {% block conteudo %}
 	
@@ -8,12 +8,13 @@
         <div class="row-fluid">
             <div class="span12">            	
                 <div class="page-header">
-	                <h1>Apoio <small>Apoie o EATI</small></h1>
+	                <h1>Fale Conosco <small>Entre em contato conosco</small></h1>
                 </div>
             </div>
         </div>
         <div class="row-fluid">
         	<div class="span6">
+        		<h3>Formulário de Contato</h3>
         		{% if enviado %}
         			{% if enviado == 1 %}
         		<div class="alert alert-success">Contato enviado com sucesso, em breve retornaremos.</div>
@@ -29,14 +30,14 @@
 					    <input id="name" name="name" type="text" class="input-block-level" placeholder="Digite seu nome" value="{% if nome %}{{ nome }}{% endif %}">
 					    <span class="help-block"></span>
 				    </div>
-				    <div class="control-group">
-					    <label for="company">Empresa:</label>
-					    <input id="company" name="company" type="text" class="input-block-level" placeholder="Digite o nome da empresa representada" value="{% if empresa_assunto %}{{ empresa_assunto }}{% endif %}">
-					    <span class="help-block"></span>
-					</div>
 					<div class="control-group">
 					    <label for="email">E-mail:</label>
 					    <input id="email" name="email" type="text" class="input-block-level" placeholder="Digite o endereço de e-mail para contato" value="{% if email %}{{ email }}{% endif %}">
+					    <span class="help-block"></span>
+					</div>
+					<div class="control-group">
+					    <label for="subject">Assunto:</label>
+					    <input id="subject" name="subject" type="text" class="input-block-level" placeholder="Digite o assunto" value="{% if empresa_assunto %}{{ empresa_assunto }}{% endif %}">
 					    <span class="help-block"></span>
 					</div>
 					<div class="control-group">
@@ -44,14 +45,24 @@
 					    <textarea id="message" name="message" class="input-block-level" rows="8">{% if mensagem %}{{ mensagem }}{% endif %}</textarea>
 					    <span class="help-block"></span>
 					</div>
-					<input type="hidden" id="flag" name="flag" value="apoio">
+					<input type="hidden" id="flag" name="flag" value='fale'>
 				    <div class="row-fluid">
 				    	<button type="submit" class="span12 btn">Enviar</button>
 					</div>
 				  </fieldset>
 				</form>
         	</div>
-        	<div class="span6"><p>Ajude a fortalecer o Encontro Anual de Tecnologia da Informação, entre em contato conosco pelo formulário para obter mais informações.</p></div>
+        	<div class="span6">
+        		<h3>Redes Sociais</h3>
+        		<p><strong>Twitter:<br /></strong><a class="twitter-follow-button" href="https://twitter.com/EATI_" data-show-count="false" data-lang="pt">Siga @EATI_</a>
+				<script type="text/javascript">
+					// <![CDATA[
+					!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+					// ]]>
+				</script>
+				</p>
+				<p><strong>Facebook:</strong><br /><iframe style="border: none; width: 100%; heigth: 50px;" src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/eati.fw" frameborder="0" scrolling="no"></iframe></p>
+        	</div>
         </div>
     </div>
 	
