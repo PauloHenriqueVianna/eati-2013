@@ -10,6 +10,9 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
 	url(r'^admin/', include(admin.site.urls)),
      
+    #funcionar todas as noticias
+    (r'^noticias/$', 'noticias.views.noticias'),
+
     #funcionar slug das noticias
 	(r'^noticia/(?P<slug>[\w_-]+)/$', 'noticias.views.noticia'),
      
