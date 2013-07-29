@@ -1,25 +1,24 @@
 body, p, small, input{
-	font-family: 'sansation_lightregular';
+  font-family: 'sansation_lightregular';
 }
 b{
-	font-family: 'sansationbold';
+  font-family: 'sansationbold';
 }
 p.texto-logo{
-	font-size: 10pt;
-	margin: 0px 0px 0px 20px;
+  font-size: 10pt;
+  margin: 0px 0px 0px 20px;
 }
 div.banner{
-	margin-top: 2%;
+  margin-top: 2%;
 }
 .menu{
-	font-size: 10pt;
+  font-size: 10pt;
 }
 img.banner{
-	width: 100%;
-	height: 100%;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
+  width: 100%;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
 }
 @font-face {
     font-family: 'sansation_lightregular';
@@ -42,11 +41,25 @@ img.banner{
     font-style: normal;
 }
 
-.ideia{
+@media all and (max-width: 1680px) { 
+  .ideia{
     width: 160px;
+    height: 1200px;
+    background-image: url("../img/teste-1.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+}
+
+.ideia{
     height: 120px;
     background-image: url("../img/teste-1.png");
     background-repeat: no-repeat;
+    background-size: 100% auto;
     -webkit-transition: all 0.4s linear;
     -moz-transition: all 0.4s linear;
     -o-transition: all 0.4s linear;
@@ -58,10 +71,10 @@ img.banner{
 }
 
 .ideia-menor{
-    width: 60px;
     height: 55px;
     background-image: url("../img/teste-1-menor.png");
     background-repeat: no-repeat;
+    background-size: 100% auto;
     -webkit-transition: all 0.4s linear;
     -moz-transition: all 0.4s linear;
     -o-transition: all 0.4s linear;
@@ -77,4 +90,49 @@ label.valid {
 }
 label.error {
   display: none !important;
+}
+
+/* Media Queries */
+
+@media all and (max-width: 1215px) { 
+  .ideia{
+    height: 98px;
+    }
+
+.ideia-menor{
+    width: 60px;
+    height: 45px;
+  }
+}
+
+@media all and (max-width: 992px) { 
+  .ideia{
+    height: 70px;
+    }
+
+.ideia-menor{
+    width: 60px;
+    height: 30px;
+  }
+}
+
+@media all and (max-width: 800px) { 
+  .ideia{
+    height: 70px;
+    }
+
+.ideia-menor{
+    height: 28px;
+  }
+}
+
+@media all and (max-width: 720px) { 
+  .ideia{
+    height: 120px;
+    }
+
+.ideia-menor{
+    width: 60px;
+    height: 50px;
+  }
 }
