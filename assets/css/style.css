@@ -21,68 +21,60 @@ img.banner{
   border-radius: 6px;
 }
 @font-face {
-    font-family: 'sansation_lightregular';
-    src: url('../fonts/sansation_light-webfont.eot');
-    src: url('../fonts/sansation_light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/sansation_light-webfont.woff') format('woff'),
-         url('../fonts/sansation_light-webfont.ttf') format('truetype'),
-         url('../fonts/sansation_light-webfont.svg#sansation_lightregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'sansation_lightregular';
+  src: url('../fonts/sansation_light-webfont.eot');
+  src: url('../fonts/sansation_light-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/sansation_light-webfont.woff') format('woff'),
+       url('../fonts/sansation_light-webfont.ttf') format('truetype'),
+       url('../fonts/sansation_light-webfont.svg#sansation_lightregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'sansationbold';
-    src: url('../fonts/sansation_bold-webfont.eot');
-    src: url('../fonts/sansation_bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/sansation_bold-webfont.woff') format('woff'),
-         url('../fonts/sansation_bold-webfont.ttf') format('truetype'),
-         url('../fonts/sansation_bold-webfont.svg#sansationbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'sansationbold';
+  src: url('../fonts/sansation_bold-webfont.eot');
+  src: url('../fonts/sansation_bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/sansation_bold-webfont.woff') format('woff'),
+       url('../fonts/sansation_bold-webfont.ttf') format('truetype'),
+       url('../fonts/sansation_bold-webfont.svg#sansationbold') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
-@media all and (max-width: 1680px) { 
-  .ideia{
-    width: 160px;
-    height: 1200px;
-    background-image: url("../img/teste-1.png");
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    -webkit-transition: all 0.4s linear;
-    -moz-transition: all 0.4s linear;
-    -o-transition: all 0.4s linear;
-    transition: all 0.4s linear;
-}
+.ver-todas{
+  float: right;
+  text-align: right;
+  cursor: pointer;
 }
 
 .ideia{
-    height: 120px;
-    background-image: url("../img/teste-1.png");
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    -webkit-transition: all 0.4s linear;
-    -moz-transition: all 0.4s linear;
-    -o-transition: all 0.4s linear;
-    transition: all 0.4s linear;
+  height: 120px;
+  background-image: url("../img/teste-1.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  transition: all 0.4s linear;
 }
 
 .ideia:hover{
-    background-image: url("../img/teste-2.png");
+  background-image: url("../img/teste-2.png");
 }
 
 .ideia-menor{
-    height: 55px;
-    background-image: url("../img/teste-1-menor.png");
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    -webkit-transition: all 0.4s linear;
-    -moz-transition: all 0.4s linear;
-    -o-transition: all 0.4s linear;
-    transition: all 0.4s linear;
+  height: 55px;
+  background-image: url("../img/teste-1-menor.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  transition: all 0.4s linear;
 }
 
 .ideia-menor:hover{
-    background-image: url("../img/teste-2-menor.png");
+  background-image: url("../img/teste-2-menor.png");
 }
 
 label.valid {
