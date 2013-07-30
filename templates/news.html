@@ -10,20 +10,18 @@
 	    {% if forloop.first %}
 	    <div class="row-fluid">
 	    {% endif %}
-	    {% if forloop.counter0 == 6 %}
-	    </div>
-	    {% endif %}
-	    {% if forloop.counter0|divisibleby:"2" %}
-	    <div class="row-fluid">
-	    {% endif%}
-	    <div class="span6">
-    	   <h3><a href="http://www.cafw.ufsm.br/eati/2013/noticia/{{ post.url }}">{{post.titulo}}</a></h3>
-    	   <p>Criado em {{post.criado_em}}</p>
-        </div>
+		    {% if forloop.counter0|divisibleby:"2" %}
+		    <div class="row-fluid">
+		    {% endif%}
+		    <div class="span6">
+	    	   <h3><a href="http://www.cafw.ufsm.br/eati/2013/noticia/{{ post.url }}">{{post.titulo}}</a></h3>
+	    	   <p>Criado em {{post.criado_em}}</p>
+	        </div>
+	        {% if forloop.counter  == 2 or forloop.counter  == 4 or forloop.counter  == 6%}
+		    </div>
+		    {% endif%}
     	{% if forloop.last %}
-    	{% if forloop.counter0|divisibleby:"2" %}
     	</div>
-    	{% endif%}
     	{% endif%}
 	{% endfor %}    
 {% endblock %}
