@@ -25,7 +25,7 @@
 					<tbody></tbody>
 						{% for new in news %}
 						<tr>
-							<td><a href="{{new.get_absolute_url}}" title="{{new.titulo}}">{{new.titulo}}</a></td>
+							<td><a href="/noticia/{{ new.url }}" title="{{new.titulo}}">{{new.titulo}}</a></td>
 							<td>{{new.criado_em}}</td>
 						</tr>
 						{% endfor %}	

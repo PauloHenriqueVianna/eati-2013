@@ -2,7 +2,7 @@
 
 {% block titulo_bloco %}
 	<h1>Notícias <small>últimas novidades</small></h1>
-	<div class="span2 ver-todas"><a href="noticias">Ver Todas</a>
+	<div class="span2 ver-todas"><a href="/noticias">Ver Todas</a>
 {% endblock %}
 
 {% block conteudo_bloco %}
@@ -14,7 +14,7 @@
 		    <div class="row-fluid">
 		    {% endif%}
 		    <div class="span6">
-	    	   <h3><a href="http://www.cafw.ufsm.br/eati/2013/noticia/{{ post.url }}">{{post.titulo}}</a></h3>
+	    	   <h3><a href="/noticia/{{ post.url }}">{{post.titulo}}</a></h3>
 	    	   <p>Criado em {{post.criado_em}}</p>
 	        </div>
 	        {% if forloop.counter  == 2 or forloop.counter  == 4 or forloop.counter  == 6%}
