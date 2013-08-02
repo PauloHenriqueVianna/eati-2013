@@ -25,6 +25,7 @@ def enviar(request):
 			empresa_assunto = empresa
 			assunto = 'Apoio IV EATI'
 			pagina = 'apoio.html'
+			destino = 'eati.organizacao@cafw.ufsm.br'
 			if empresa != '':
 				mensagem = '<b>Nome:</b> ' + nome + ' <br> <b>Empresa:</b> ' + empresa + ' <br><br> ' + message
 			else:
@@ -33,8 +34,9 @@ def enviar(request):
 			assunto = request.POST.get('subject')
 			empresa_assunto = assunto
 			pagina = 'fale-conosco.html'
+			destino = 'eati@cafw.ufsm.br'
 			mensagem = '<b>Nome:</b> ' + nome + ' <br><br> ' + message
-		msg = EmailMessage(assunto, mensagem, email, ['eati.organizacao@cafw.ufsm.br'],headers = {'Reply-To': email})
+		msg = EmailMessage(assunto, mensagem, email, [destino],headers = {'Reply-To': email})
 		msg.content_subtype = "html"
 		if msg.send():
 			return render_to_response(pagina, RequestContext(request, {'enviado':1}))
