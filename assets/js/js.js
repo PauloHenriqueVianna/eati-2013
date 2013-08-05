@@ -22,6 +22,10 @@ $(document).ready(function(){
       element
       .addClass('valid')
       .closest('.control-group').removeClass('error').addClass('success');
+    },
+    submitHandler: function(form) {
+      $(document.body).modalLoading(100, '<div class="spinner"></div>');
+      form.submit();
     }
  });
 });

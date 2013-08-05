@@ -93,6 +93,50 @@ label.error {
     margin: 0 0 0 0;
 }
 
+.spinner {
+   height:200px;
+   width:200px;
+   margin:0 auto;
+   position:relative;
+   -webkit-animation: rotation 2s infinite linear;
+   -moz-animation: rotation 2s infinite linear;
+   -o-animation: rotation 2s infinite linear;
+   animation: rotation 2s infinite linear;
+   border:20px solid rgba(0,174,239,.15);
+   border-radius:100%;
+}
+
+.spinner:before {
+   content:"";
+   display:block;
+   position:absolute;
+   left:-20px;
+   top:-20px;
+   height:100%;
+   width:100%;
+   border-top:20px solid #1786c1;;
+   border-left:20px solid transparent;
+   border-bottom:20px solid transparent;
+   border-right:20px solid transparent;
+   border-radius:100%;
+}
+
+@-webkit-keyframes rotation {
+   from {-webkit-transform: rotate(0deg);}
+   to {-webkit-transform: rotate(359deg);}
+}
+@-moz-keyframes rotation {
+   from {-moz-transform: rotate(0deg);}
+   to {-moz-transform: rotate(359deg);}
+}
+@-o-keyframes rotation {
+   from {-o-transform: rotate(0deg);}
+   to {-o-transform: rotate(359deg);}
+}
+@keyframes rotation {
+   from {transform: rotate(0deg);}
+   to {transform: rotate(359deg);}
+
 /* Media Queries */
 
 @media all and (max-width: 1215px) { 
