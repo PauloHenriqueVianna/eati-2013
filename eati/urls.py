@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from eati.feeds import TodasNoticias, UltimasNoticias
 from django.conf import settings
 from django.contrib import admin
 
@@ -25,5 +26,10 @@ urlpatterns = patterns('',
     #tinymce
     (r'^tinymce/', include('tinymce.urls')),
 
+    #contato
     url(r'^contato/', include('contato.urls')),
+
+    #feed
+    (r'^feed/$', TodasNoticias()),
+    (r'^feed/ultimas/$', UltimasNoticias()),
 )
