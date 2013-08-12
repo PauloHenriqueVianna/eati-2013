@@ -27,6 +27,7 @@ img.banner{
        url('../fonts/sansation_light-webfont.woff') format('woff'),
        url('../fonts/sansation_light-webfont.ttf') format('truetype'),
        url('../fonts/sansation_light-webfont.svg#sansation_lightregular') format('svg');
+  src: local(cool_font), url("../fonts/sansation_light-webfont.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -37,6 +38,7 @@ img.banner{
        url('../fonts/sansation_bold-webfont.woff') format('woff'),
        url('../fonts/sansation_bold-webfont.ttf') format('truetype'),
        url('../fonts/sansation_bold-webfont.svg#sansationbold') format('svg');
+  src: local(cool_font), url("../fonts/sansation_bold-webfont.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -76,6 +78,51 @@ img.banner{
 .ideia-menor:hover{
   background-image: url("../img/teste-2-menor.png");
 }
+
+.redes-sociais{
+  padding: 10px 10px 10px 10px;
+  margin-top: 5px;
+  float: right;
+}
+  .facebook{
+    padding: 0px 0px 10px 22px;
+    background-image: url("../img/icone-facebook.png");
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+    opacity: 0.5;
+  }
+    .facebook:hover{
+      opacity: 1;
+    }
+  .twitter{
+    padding: 0px 0px 10px 25px;
+    background-image: url("../img/icone-twitter.png");
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+    opacity: 0.5;
+  }
+    .twitter:hover{
+      opacity: 1;
+    }
+  .feed{
+    padding: 0px 0px 10px 25px;
+    background-image: url("../img/icone-feed.png");
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+    opacity: 0.5;
+  }
+    .feed:hover{
+      opacity: 1;
+    }
 
 label.valid {
   display: none !important;
