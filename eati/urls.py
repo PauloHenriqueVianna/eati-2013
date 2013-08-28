@@ -29,6 +29,9 @@ urlpatterns = patterns('',
     #contato
     url(r'^contato/', include('contato.urls')),
 
+    #inscricao
+    url(r'^inscricao/', include('inscricoes.urls')),
+
     #feed
     (r'^feed/$', TodasNoticias()),
     (r'^feed/ultimas/$', UltimasNoticias()),

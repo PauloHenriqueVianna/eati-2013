@@ -1,0 +1,72 @@
+{% extends "index.html" %}
+
+{% block title %}Dados da Inscrição{% endblock %}
+
+{% block conteudo %}
+	
+	<div class="container">
+        <div class="row-fluid">
+            <div class="span12">            	
+                <div class="page-header">
+	                <h1>Dados da Inscrição <small>Informações de sua Inscrição no EATI</small></h1>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+        	<div class="span12">
+	        	<table class="table table-condensed table-bordered">
+		            <tbody>
+		                <tr>
+		                    <td>Endereço de e-mail</td>
+		                    <td>{{ participante.email }}</td>
+		                </tr>
+		                <tr>
+		                    <td>Nome</td>
+		                    <td>{{ participante.nome }}</td>
+		                </tr>
+		                <tr>
+		                    <td>Sexo</td>
+		                    <td>{{ participante.getSexo }}</td>
+		                </tr>
+		                <tr>
+		                    <td>Instituição</td>
+		                    <td>{{ participante.instituicao }}</td>
+		                </tr>
+		                <tr>
+		                    <td>Categoria de participação</td>
+		                    <td>{{ participante.id_categoria.descr_categoria }}</td>
+		                </tr>
+		                <tr>
+		                    <td>Endereço para correspondência</td>
+		                    <td>{{ participante.endereco }}</td>
+		                </tr>
+		                <tr>
+		                    <td>Complemento do endereço</td>
+		                    <td>{{ participante.complemento }}</td>
+		                </tr>
+		                <tr>
+		                    <td>CEP</td>
+		                    <td>{{ participante.cep }}</td>
+		                </tr>
+		                <tr>
+		                    <td>Município</td>
+		                    <td>{{ participante.cidade }} - {{ participante.uf.uf }}</td>
+		                </tr>
+		                <tr>
+		                    <td>Atividades adicionais</td>
+		                    <td>{% for atividade in atividades %}
+		                    	<p>{{ atividade.id_atividade.descr_atividade }}</p>
+		                    	{% endfor%}
+		                    </td>
+		                </tr>
+		            </tbody>
+		        </table>
+      		</div>
+        </div>
+        <div class="row-fluid">
+        	<div class="span12">
+        		<a href="http://www.cafw.ufsm.br/eati/boleto/b.php?id={{ participante.id_participante }}&num_inscricao={{ participante.num_inscricao }}" target="_blank"><button class="btn">Gerar uma nova via do boleto</button></a>
+        	</div>
+        </div>
+    </div>
+{% endblock %}
