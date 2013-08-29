@@ -75,6 +75,13 @@ class AtividadesAdicionais(models.Model):
     class Meta:
         db_table = 'ATIVIDADES_ADICIONAIS'
 
+    def haVagas(self):
+        inscritos = ParticipantesAtividades.objects.filter(id_atividade=self.id_atividade).count()
+        if inscritos >= self.vagas:
+            return False
+        else:
+            return True
+
 class ParticipantesAtividades(models.Model):
     id_participante = models.ForeignKey(Participantes, db_column='ID_PARTICIPANTE')
     id_atividade = models.ForeignKey(AtividadesAdicionais, db_column='ID_ATIVIDADE')
