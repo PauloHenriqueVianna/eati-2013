@@ -30,7 +30,7 @@ urlpatterns = patterns('',
     url(r'^contato/', include('contato.urls')),
 
     #inscricao
-    url(r'^inscricao/', include('inscricoes.urls')),
+    url(r'^inscricao-teste/', include('inscricoes.urls')),
 
     #feed
     (r'^feed/$', TodasNoticias()),

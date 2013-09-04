@@ -16,11 +16,11 @@
         	<div class="span6">
         		<h3>Dados Pessoais</h3>
         		<hr>
-        		<form id="inscricao" name="inscricao" action="/inscricao/consulta/" method="POST">
+        		<form id="inscricao" name="inscricao" action="/inscricao-teste/cadastra/" method="POST">
         		  {% csrf_token %}
 					<fieldset>
 					  	<div class="control-group">
-						    <label for="name">E-mail</label>
+						    <label for="email">E-mail</label>
 						    <input id="email" name="email" type="text" class="input-block-level" readonly="true" placeholder="Digite seu e-mail" value="{{ email }}">
 					    </div>
 					    <hr>
@@ -110,7 +110,7 @@
 					{% for a in atividades %}
 					<div class="control-group well">
 					    <label class="checkbox">
-						  <input type="checkbox" {% if a.haVagas == False %} disabled="True" {% endif %} value="{{ a.id_atividade }}">
+						  <input type="checkbox" name="atividades[]" {% if a.haVagas == False %} disabled="True" {% endif %} value="{{ a.id_atividade }}">
 						  <span {% if a.haVagas == False %} style="text-decoration: line-through;" {% endif %}>{{ a.descr_atividade }}</span>
 						</label>
 		    		</div>
