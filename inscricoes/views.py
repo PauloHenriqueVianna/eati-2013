@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response, RequestContext
 from django.core.context_processors import csrf
 from django.db import transaction
-from django.db.models import F
+from django.db.models import F, Sum
 from django.core.mail import send_mail,EmailMessage
 from models import Estados, Participantes, ParticipantesAtividades, AtividadesAdicionais, IdsDisponiveis, EventosInscricao, Categorias
 
@@ -37,8 +37,14 @@ def ConsultaInscricao(request):
 		try:
 			participante = Participantes.objects.get(email=email, id_categoria__id_evento=evento, num_inscricao=inscricao)
 			atividades = ParticipantesAtividades.objects.filter(id_participante=participante.id_participante, id_atividade__id_evento=evento)
+			valorCategoria = participante.id_categoria.vl_categoria
+			valorAtividades = atividades.aggregate(somaAtividades=Sum('id_atividade__vl_atividade'))
+			atividades.soma = valorCategoria + valorAtividades['somaAtividades']
+			atividades.soma = str(atividades.soma)
+			atividades.soma.replace(',','.')
 			return render_to_response('dadosInscricao.html', RequestContext(request, {'participante':participante, 'atividades':atividades}))
 		except:
+
 			return render_to_response('consultaInscricao.html', RequestContext(request, {'email':email,'erro':True}))
 	else:
 		email = request.session['email']
@@ -71,6 +77,11 @@ def CadastraInscricao(request):
 			atividade1.save()
 		participante = Participantes.objects.get(email=b.email, id_categoria__id_evento=evento, num_inscricao=b.num_inscricao)
 		atividades = ParticipantesAtividades.objects.filter(id_participante=b.id_participante, id_atividade__id_evento=evento)
+		valorCategoria = participante.id_categoria.vl_categoria
+		valorAtividades = atividades.aggregate(somaAtividades=Sum('id_atividade__vl_atividade'))
+		atividades.soma = valorCategoria + valorAtividades['somaAtividades']
+		atividades.soma = str(atividades.soma)
+		atividades.soma.replace(',','.')
 		try:
 			EnviarEmail(participante,atividades)
 			return render_to_response('dadosInscricao.html', RequestContext(request, {'participante':participante, 'atividades':atividades, 'nova':True}))
@@ -110,7 +121,7 @@ def Ean13(ultNrIsnc):
 
 def EnviarEmail(participante,atividades):
 	email = 'eati@cafw.ufsm.br'
-	mensagem = "<h3>Sua inscrição no IV EATI foi realizada com sucesso, seguem os dados cadastrados:</h3>"
+	mensagem = "<h3>Sua inscrição no " + participante.id_categoria.id_evento.nome_evento.encode("UTF-8") + " foi realizada com sucesso, seguem os dados cadastrados:</h3>"
 	mensagem += "<b>Nome:</b> " + participante.nome.encode("UTF-8") + "<br>"
 	mensagem += "<b>Número de Incrição:</b> " + str(participante.num_inscricao) + "<br>"
 	mensagem += "<b>E-mail:</b> " + participante.email.encode("UTF-8") + "<br>"
