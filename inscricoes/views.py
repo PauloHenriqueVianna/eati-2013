@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response, RequestContext
 from django.core.context_processors import csrf
 from django.db import transaction
 from django.db.models import F
+from django.core.mail import send_mail,EmailMessage
 from models import Estados, Participantes, ParticipantesAtividades, AtividadesAdicionais, IdsDisponiveis, EventosInscricao, Categorias
 
 evento = 3
@@ -69,7 +71,11 @@ def CadastraInscricao(request):
 			atividade1.save()
 		participante = Participantes.objects.get(email=b.email, id_categoria__id_evento=evento, num_inscricao=b.num_inscricao)
 		atividades = ParticipantesAtividades.objects.filter(id_participante=b.id_participante, id_atividade__id_evento=evento)
-		return render_to_response('dadosInscricao.html', RequestContext(request, {'participante':participante, 'atividades':atividades, 'nova':True}))
+		try:
+			EnviarEmail(participante,atividades)
+			return render_to_response('dadosInscricao.html', RequestContext(request, {'participante':participante, 'atividades':atividades, 'nova':True}))
+		except:
+			return render_to_response('dadosInscricao.html', RequestContext(request, {'participante':participante, 'atividades':atividades, 'nova':True}))
 	else:
 		return render_to_response('inicio.html', RequestContext(request, {}))
 
@@ -101,3 +107,26 @@ def Ean13(ultNrIsnc):
 		multiplo += 1
 	dv = multiplo - soma
 	return ultNrIsnc + str(dv)
+
+def EnviarEmail(participante,atividades):
+	email = 'eati@cafw.ufsm.br'
+	mensagem = "<h3>Sua inscrição no IV EATI foi realizada com sucesso, seguem os dados cadastrados:</h3>"
+	mensagem += "<b>Nome:</b> " + participante.nome.encode("UTF-8") + "<br>"
+	mensagem += "<b>Número de Incrição:</b> " + str(participante.num_inscricao) + "<br>"
+	mensagem += "<b>E-mail:</b> " + participante.email.encode("UTF-8") + "<br>"
+	mensagem += "<b>Sexo:</b> " + participante.getSexo().encode("UTF-8") + "<br>"
+	mensagem += "<b>Instituição:</b> " + participante.instituicao.encode("UTF-8") + "<br>"
+	mensagem += "<b>Categoria de Participação:</b> " + participante.id_categoria.descr_categoria.encode("UTF-8") + "<br>"
+	mensagem += "<b>Endereço:</b> " + participante.endereco.encode("UTF-8") + "<br>"
+	mensagem += "<b>Complemento:</b> " + participante.complemento.encode("UTF-8") + "<br>"
+	mensagem += "<b>CEP:</b> " + participante.cep.encode("UTF-8") + "<br>"
+	mensagem += "<b>Município:</b> " + participante.cidade.encode("UTF-8") + " - " + participante.uf.uf.encode("UTF-8")  + "<br>"
+	mensagem += "<h4>Atividades Adicionais</h4>"
+	for atividade in atividades:
+		mensagem += "<p>" + atividade.id_atividade.descr_atividade.encode("UTF-8") + "</p>"
+	msg = EmailMessage('Inscrição no EATI IV', mensagem, email, [participante.email],headers = {'Reply-To': email})
+	msg.content_subtype = "html"
+	if msg.send():
+		return True
+	else:
+		return False
