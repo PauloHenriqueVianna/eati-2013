@@ -29,3 +29,32 @@ $(document).ready(function(){
     }
  });
 });
+
+$(document).ready(function(){
+  $('#inscricao').validate({
+    rules: {
+      nome: { 
+        required: true
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      sexo: {
+        required: true
+      }
+    },
+    highlight: function(element) {
+      $(element).closest('.control-group').removeClass('success').addClass('error');
+    },
+    success: function(element) {
+      element
+      .addClass('valid')
+      .closest('.control-group').removeClass('error').addClass('success');
+    },
+    submitHandler: function(form) {
+      $(document.body).modalLoading(100, '<div class="spinner"></div>');
+      form.submit();
+    }
+ });
+});
