@@ -55,38 +55,47 @@ def CadastraInscricao(request):
 	ctoken.update(csrf(request))
 	if request.method == 'POST':
 		b = Participantes()
-		b.email = request.POST.get('email')
-		b.nome = request.POST.get('nome')
+		b.email = request.POST.get('email')[0:198]
+		b.nome = request.POST.get('nome')[0:98]
 		b.sexo = request.POST.get('sexo')
-		b.instituicao = request.POST.get('instituicao')
+		b.instituicao = request.POST.get('instituicao')[0:98]
 		categoria = Categorias.objects.get(id_categoria=request.POST.get('categoria'))
 		b.id_categoria = categoria
-		b.endereco = request.POST.get('endereco')
-		b.complemento = request.POST.get('complemento')
-		b.cep = request.POST.get('cep')
-		b.cidade = request.POST.get('municipio')
+		b.endereco = request.POST.get('endereco')[0:98]
+		b.complemento = request.POST.get('complemento')[0:98]
+		b.cep = request.POST.get('cep')[0:9]
+		b.cidade = request.POST.get('municipio')[0:98]
 		estado = Estados.objects.get(uf=request.POST.get('uf'))
 		b.uf = estado
 		b.id_participante = getUltimoId('PARTICIPANTES')
 		b.num_inscricao = getNumeroIncricao()
-		b.save()
-		atividades = request.POST.getlist('atividades[]')
-		for a in atividades:
-			atividade = AtividadesAdicionais.objects.get(id_atividade=a)
-			atividade1 = ParticipantesAtividades(id_atividade=atividade,id_participante=b)
-			atividade1.save()
-		participante = Participantes.objects.get(email=b.email, id_categoria__id_evento=evento, num_inscricao=b.num_inscricao)
-		atividades = ParticipantesAtividades.objects.filter(id_participante=b.id_participante, id_atividade__id_evento=evento)
-		valorCategoria = participante.id_categoria.vl_categoria
-		valorAtividades = atividades.aggregate(somaAtividades=Sum('id_atividade__vl_atividade'))
-		atividades.soma = valorCategoria + valorAtividades['somaAtividades']
-		atividades.soma = str(atividades.soma)
-		atividades.soma.replace(',','.')
+		try:
+			b.save()
+		except:
+			return render_to_response('inicio.html', RequestContext(request, {}))
+		atividadesForm = request.POST.getlist('atividades[]')
+		if atividadesForm:
+			for a in atividadesForm:
+				atividade = AtividadesAdicionais.objects.get(id_atividade=a)
+				atividade1 = ParticipantesAtividades(id_atividade=atividade,id_participante=b)
+				atividade1.save()
+			participante = Participantes.objects.get(email=b.email, id_categoria__id_evento=evento, num_inscricao=b.num_inscricao)
+			atividades = ParticipantesAtividades.objects.filter(id_participante=b.id_participante, id_atividade__id_evento=evento)
+			valorCategoria = participante.id_categoria.vl_categoria
+			valorAtividades = atividades.aggregate(somaAtividades=Sum('id_atividade__vl_atividade'))
+			atividades.soma = valorCategoria + valorAtividades['somaAtividades']
+			atividadesTotal = str(atividades.soma)
+		else:
+			atividades = []
+			participante = Participantes.objects.get(email=b.email, id_categoria__id_evento=evento, num_inscricao=b.num_inscricao)
+			valorCategoria = participante.id_categoria.vl_categoria
+			atividadesTotal = str(valorCategoria)
+		atividadesTotal.replace(',','.')
 		try:
 			EnviarEmail(participante,atividades)
-			return render_to_response('dadosInscricao.html', RequestContext(request, {'participante':participante, 'atividades':atividades, 'nova':True}))
+			return render_to_response('dadosInscricao.html', RequestContext(request, {'participante':participante, 'atividades':atividades, 'atividadesTotal':atividadesTotal, 'nova':True}))
 		except:
-			return render_to_response('dadosInscricao.html', RequestContext(request, {'participante':participante, 'atividades':atividades, 'nova':True}))
+			return render_to_response('dadosInscricao.html', RequestContext(request, {'participante':participante, 'atividades':atividades, 'atividadesTotal':atividadesTotal, 'nova':True}))
 	else:
 		return render_to_response('inicio.html', RequestContext(request, {}))
 
