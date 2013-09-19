@@ -32,11 +32,19 @@
 				</form>
 				{% if erro %}
 					<div class="alert alert-error">
-					  A inscrição informada está incorreta.
+					  {{ erro }}
+					</div>
+				{% endif %}
+				{% if sucesso %}
+					<div class="alert alert-success">
+					  {{ sucesso }}
 					</div>
 				{% endif %}
         	</div>
-        	<div class="span6"><p>Para consultar os dados de sua inscrição e gerar uma nova via do boleto bancário, informe seu e-mail e seu número de inscrição.</p></div>
+        	<div class="span6">
+        		<p>Para consultar os dados de sua inscrição e gerar uma nova via do boleto bancário, informe seu e-mail e seu número de inscrição.</p>
+        		<a id="enviaInscricao" href="/inscricao-teste/envia/">Envie meu número de inscrição por e-mail</a>
+        	</div>
         </div>
     </div>
 {% endblock %}

@@ -44,11 +44,30 @@ def ConsultaInscricao(request):
 			atividades.soma.replace(',','.')
 			return render_to_response('dadosInscricao.html', RequestContext(request, {'participante':participante, 'atividades':atividades}))
 		except:
-
-			return render_to_response('consultaInscricao.html', RequestContext(request, {'email':email,'erro':True}))
+			erro = "A inscrição informada está incorreta."
+			return render_to_response('consultaInscricao.html', RequestContext(request, {'email':email,'erro':erro}))
 	else:
 		email = request.session['email']
 		return render_to_response('consultaInscricao.html', RequestContext(request, {'email':email}))
+
+def EnviaNumeroInscricao(request):
+	email = request.session['email']
+	try:
+		participante = Participantes.objects.get(email=email, id_categoria__id_evento=evento)
+		try:
+			mensagem = "<h3>Seu número de inscrição no " + participante.id_categoria.id_evento.nome_evento.encode("UTF-8") + " é:</h3>"
+			mensagem += "<h1 style='color:red; text-align:center;'>" + str(participante.num_inscricao) + "</h1>"
+			msg = EmailMessage('Número de Inscrição no IV EATI', mensagem, 'eati@cafw.ufsm.br', [email],headers = {'Reply-To': 'eati@cafw.ufsm.br'})
+			msg.content_subtype = "html"
+			msg.send()
+			sucesso = "Seu número de incrição foi enviado para o email " + email.encode("UTF-8") + "."
+			return render_to_response('consultaInscricao.html', RequestContext(request, {'email':email,'sucesso':sucesso}))
+		except:
+			erro = "Ocorreu um erro ao tentar enviar o e-mail, tente novamente."
+			return render_to_response('consultaInscricao.html', RequestContext(request, {'email':email,'erro':erro}))
+	except:
+		erro = "Não há inscrições realizadas com este e-mail."
+		return render_to_response('consultaInscricao.html', RequestContext(request, {'email':email,'erro':erro}))
 
 def CadastraInscricao(request):
 	ctoken = {}
@@ -144,7 +163,7 @@ def EnviarEmail(participante,atividades):
 	mensagem += "<h4>Atividades Adicionais</h4>"
 	for atividade in atividades:
 		mensagem += "<p>" + atividade.id_atividade.descr_atividade.encode("UTF-8") + "</p>"
-	msg = EmailMessage('Inscrição no EATI IV', mensagem, email, [participante.email],headers = {'Reply-To': email})
+	msg = EmailMessage('Inscrição no IV EATI', mensagem, email, [participante.email],headers = {'Reply-To': email})
 	msg.content_subtype = "html"
 	if msg.send():
 		return True
