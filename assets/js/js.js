@@ -129,12 +129,20 @@ $(document).ready(function(){
         $(document.body).modalLoading(100, '<div class="spinner"></div>');
         form.submit();
       }else{
-        bootbox.confirm("Você não selecionou nenhuma Atividade Adicional, deseja continuar mesmo assim?", function(result) {
+        if ($.browser.msie) {
+          result = confirm("Você não selecionou nenhuma Atividade Adicional, deseja continuar mesmo assim?");
           if(result){
             $(document.body).modalLoading(100, '<div class="spinner"></div>');
             form.submit();
           }
-        });
+        }else{
+          bootbox.confirm("Você não selecionou nenhuma Atividade Adicional, deseja continuar mesmo assim?", function(result) {
+            if(result){
+              $(document.body).modalLoading(100, '<div class="spinner"></div>');
+              form.submit();
+            }
+          });
+        } 
       }
     }
  });
