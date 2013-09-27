@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import hashlib
 from django.shortcuts import render_to_response, RequestContext
 from django.core.context_processors import csrf
 from django.db import transaction
@@ -42,6 +43,7 @@ def ConsultaInscricao(request):
 			atividades.soma = valorCategoria + valorAtividades['somaAtividades']
 			atividades.soma = str(atividades.soma)
 			atividades.soma.replace(',','.')
+			participante.cod = hashlib.sha1("EA" + str(participante.id_participante) + "TI" + str(participante.num_inscricao)).hexdigest()
 			return render_to_response('dadosInscricao.html', RequestContext(request, {'participante':participante, 'atividades':atividades}))
 		except:
 			erro = "A inscrição informada está incorreta."
@@ -60,7 +62,7 @@ def EnviaNumeroInscricao(request):
 			msg = EmailMessage('Número de Inscrição no IV EATI', mensagem, 'eati@cafw.ufsm.br', [email],headers = {'Reply-To': 'eati@cafw.ufsm.br'})
 			msg.content_subtype = "html"
 			msg.send()
-			sucesso = "Seu número de incrição foi enviado para o email " + email.encode("UTF-8") + "."
+			sucesso = "Seu número de inscrição foi enviado para o email " + email.encode("UTF-8") + "."
 			return render_to_response('consultaInscricao.html', RequestContext(request, {'email':email,'sucesso':sucesso}))
 		except:
 			erro = "Ocorreu um erro ao tentar enviar o e-mail, tente novamente."
@@ -110,6 +112,7 @@ def CadastraInscricao(request):
 			valorCategoria = participante.id_categoria.vl_categoria
 			atividadesTotal = str(valorCategoria)
 		atividadesTotal.replace(',','.')
+		participante.cod = hashlib.sha1("EA" + str(participante.id_participante) + "TI" + str(participante.num_inscricao)).hexdigest()
 		try:
 			EnviarEmail(participante,atividades)
 			return render_to_response('dadosInscricao.html', RequestContext(request, {'participante':participante, 'atividades':atividades, 'atividadesTotal':atividadesTotal, 'nova':True}))
