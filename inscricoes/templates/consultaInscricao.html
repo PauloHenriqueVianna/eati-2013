@@ -14,7 +14,7 @@
         </div>
         <div class="row-fluid">
         	<div class="span6">
-        		<form id="consulta" name="consulta" action="/inscricao-teste/consulta/" method="POST">
+        		<form id="consulta" name="consulta" action="/inscricao/consulta/" method="POST">
         		  {% csrf_token %}
 				  <fieldset>
 				  	<div class="control-group">
@@ -43,7 +43,7 @@
         	</div>
         	<div class="span6">
         		<p>Para consultar os dados de sua inscrição e gerar uma nova via do boleto bancário, informe seu e-mail e seu número de inscrição.</p>
-        		<a id="enviaInscricao" href="/inscricao-teste/envia/">Envie meu número de inscrição por e-mail</a>
+        		<a id="enviaInscricao" href="/inscricao/envia/">Envie meu número de inscrição por e-mail</a>
         	</div>
         </div>
     </div>

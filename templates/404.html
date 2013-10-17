@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.cafw.ufsm.br/eati/2013/assets/img/favicon.ico">
+
+    <link type="text/css" rel="stylesheet" href="http://www.cafw.ufsm.br/eati/2013/assets/css/bootstrap.css"  />
+    <link type="text/css" rel="stylesheet" href="http://www.cafw.ufsm.br/eati/2013/assets/css/style.css"  />
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-42408175-1', 'ufsm.br');
+      ga('send', 'pageview');
+
+    </script>
+  
+    <title>{% block title %}{% endblock %} | IV EATI</title>
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+     
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+          </a>
+          <!-- Be sure to leave the brand out there if you want it shown -->
+          <a class="brand logo" href="/eati/2013/"><img class="logo" src="http://www.cafw.ufsm.br/eati/2013/assets/img/logo.png"></a>
+          <a class="brand" href="/eati/2013/"><p class="texto-logo">4º Encontro Anual de </p><p class="texto-logo">Tecnologia da Informação</p></a>
+     
+          <!-- Everything you want hidden at 940px or less, place within here -->
+          <div class="nav-collapse menu">
+            <!-- .nav, .navbar-search, .navbar-form, etc -->
+            <ul class="nav">
+              <li class="divider-vertical"></li> 
+              <li>
+                <a href="/eati/2013/sobre">
+                  <i class="icon-asterisk icon-white"></i>
+                  Sobre
+                </a>
+              </li>
+              <li>
+                <a href="/eati/2013/noticias">
+                  <i class="icon-th-list icon-white"></i>
+                  Notícias
+                </a>
+              </li>             
+              <!--<li>
+                <a href="/eati/2013/inscricoes">
+                  <i class="icon-pencil icon-white"></i>
+                  Inscrições
+                </a>
+              </li>-->
+              <li>
+                <a href="/eati/2013/programacao">
+                  <i class="icon-calendar icon-white"></i>
+                  Programação
+                </a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-file icon-white"></i>
+                  Trabalhos
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                	<li>
+                      <a href="/eati/2013/submissao">
+                    	<i class="icon-share"></i>
+                        Submissão
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/eati/2013/selecionados">
+                    	<i class="icon-check"></i>
+                        Selecionados
+                      </a>
+                    </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-info-sign icon-white"></i>
+                  Informações
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="/eati/2013/informacoes">
+                          <i class="icon-question-sign"></i>
+                          Informações Úteis
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/eati/2013/organizacao">
+                          <i class="icon-user"></i>
+                          Organização
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/eati/2013/amigas">
+                          <i class="icon-star"></i>
+                          Paginas Amigas
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/eati/2013/solidario">
+                          <i class="icon-heart"></i>
+                          EATI Solidário
+                        </a>
+                    </li>                  
+                </ul>
+              </li>	
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-play-circle icon-white"></i>
+                  Mídia
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                	<li>
+                      <a href="/eati/2013/galeria">
+                    	<i class="icon-camera"></i>
+                        Galeria de Fotos
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/eati/2013/materiais">
+                    	<i class="icon-book"></i>
+                        Materiais
+                      </a>
+                    </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-envelope icon-white"></i>
+                  Contato
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                      <a href="/eati/2013/contato/apoio">
+                      <i class="icon-plus"></i>
+                        Apoie
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/eati/2013/contato/fale-conosco">
+                      <i class="icon-comment"></i>
+                        Fale Conosco
+                      </a>
+                    </li>
+                </ul>
+              </li>
+            </ul>
+            <div class="redes-sociais">
+              <a href="https://www.facebook.com/eati.fw" target="_blank" class="facebook">
+              </a>
+              <a href="https://twitter.com/EATI_" target="_blank" class="twitter">
+              </a>
+              <a href="/eati/2013/feed" target="_blank" class="feed">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+<!-- ####### Destaque ####### -->
+    <div class="container hidden-phone">
+      <div class="row-fluid">
+        <div class="span12 banner">
+          <img class="banner" src="http://www.cafw.ufsm.br/eati/2013/assets/img/banner.png">
+        </div>
+      </div>
+    </div>       
+<!-- ###### Conteúdo ###### -->
+	<div class="container">
+		{% block conteudo %}
+			Erro 404 - Esta página não existe.
+		{% endblock %}
+    </div>
+    
+    {% block merchan %}
+	{% endblock %}
+     
+    <hr>
+<!-- ###### Rodapé ###### -->
+	  <div class="container">
+        <div class="row-fluid">
+        	<div class="span6">
+            	<p>
+                    <b>IV Encontro Anual de Tecnologia da Informação</b><br />
+                    Tecnologia em Sistemas para Internet<br />
+                    Colégio Agrícola de Frederico Westphalen<br />
+                    Universidade Federal de Santa Maria
+                </p>
+                <p>
+                	<small>
+                    	IV EATI © 2013. Todos os direitos reservados.<br />
+                        Criado por <a href="http://about.me/gutofoletto" target="_blank" title="Perfil de Guto Foletto">GutoFoletto</a>
+                        com <a href="http://twitter.github.com/bootstrap/" target="_blank" title="twitter boostrap">Bootstrap</a>
+                    </small>
+                </p>
+            </div>
+            <div class="span3">
+            	<p>
+                	<b>Edições Anteriores</b>
+                	<ul class="unstyled">
+                      <li><a href="http://www.cafw.ufsm.br/eati/2012" target="_blank" title="Segundo EATI">III EATI - 2012</a></li>
+                    	<li><a href="http://www.cafw.ufsm.br/eati/2011" target="_blank" title="Segundo EATI">II EATI - 2011</a></li>
+                    	<li><a href="http://www.cafw.ufsm.br/eati/2010" target="_blank" title="Primeiro EATI">I EATI - 2010</a></li>
+                    </ul>
+                <p></p>
+            </div>
+            <div class="span3">
+            	<p><b>Realização:</b></p>
+            	<div class="row-fluid">
+                    <div class="span4">
+                        <a href="http://www.ufsm.br" target="_blank" title="Universidade Federal de Santa Maria">
+                            <img src="http://www.cafw.ufsm.br/eati/2013/assets/img/ufsm.jpg" />
+                        </a>
+                    </div>
+                    <div class="span4">
+                        <a href="http://www.cafw.ufsm.br" target="_blank" title="Colégio Agrícola de Frederico Westphalen">
+                            <img src="http://www.cafw.ufsm.br/eati/2013/assets/img/cafw.jpg" />
+                        </a>
+                    </div>
+                    <div class="span4">
+                        <img src="http://www.cafw.ufsm.br/eati/2013/assets/img/tsi.jpg" title="Tecnologia em Sistemas para Internet" />
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</body>
+<script type="text/javascript" language="javascript" src="http://www.cafw.ufsm.br/eati/2013/assets/js/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="http://www.cafw.ufsm.br/eati/2013/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" language="javascript" src="http://www.cafw.ufsm.br/eati/2013/assets/js/jquery.validate.min.js"></script>
+<script type="text/javascript" language="javascript" src="http://www.cafw.ufsm.br/eati/2013/assets/js/jquery.maskedinput.min.js"></script>
+<script type="text/javascript" language="javascript" src="http://www.cafw.ufsm.br/eati/2013/assets/js/modalLoading.js"></script>
+<script type="text/javascript" language="javascript" src="http://www.cafw.ufsm.br/eati/2013/assets/js/bootbox.min.js"></script>
+<script type="text/javascript" language="javascript" src="http://www.cafw.ufsm.br/eati/2013/assets/js/js.js"></script>
+</html>
