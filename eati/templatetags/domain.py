@@ -6,6 +6,6 @@ register = template.Library()
 
 def get_domain():
     
-    return Site.objects.get_current() 
+    return 'http://' + str(Site.objects.get_current())
 
 register.simple_tag(get_domain)
