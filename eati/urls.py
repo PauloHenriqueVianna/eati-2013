@@ -32,6 +32,9 @@ urlpatterns = patterns('',
     #inscricao
     url(r'^inscricao/', include('inscricoes.urls')),
 
+    #maratona
+    url(r'^maratona/', include('maratona.urls')),
+
     #feed
     (r'^feed/$', TodasNoticias()),
     (r'^feed/ultimas/$', UltimasNoticias()),

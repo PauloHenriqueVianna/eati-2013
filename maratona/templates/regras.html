@@ -1,0 +1,98 @@
+{% extends "index.html" %}
+
+{% block title %}Maratona de Programação{% endblock %}
+
+{% block conteudo %}
+	
+	<div class="container">
+        <div class="row-fluid">
+            <div class="span12">            	
+                <div class="page-header">
+	                <h1>Maratona de Programação <small>Conheça as regras e realize sua inscrição na maratona de programação</small></h1>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+        	<div class="span6">
+                <h3>Inscrição</h3>
+                <hr>
+                {% if erro %}
+                    <div class="alert alert-error">
+                      {{ erro }}
+                    </div>
+                {% endif %}
+                {% if sucesso %}
+                    <div class="alert alert-success">
+                      {{ sucesso }}
+                    </div>
+                {% endif %}
+        		<form id="maratona" name="maratona" action="/maratona/inscricao/" method="POST">
+        		  {% csrf_token %}
+				  <fieldset>
+                    <div class="well">
+                        <div class="control-group">
+                            <label for="equipe">Equipe</label>
+                            <input id="equipe" name="equipe" type="text" class="input-block-level" placeholder="Digite o nome da equipe" value="">
+                        </div>
+                    </div>
+                    <div class="well">
+    				  	<div class="control-group">
+    					    <label for="integrante01">Integrante 01</label>
+    					    <input id="integrante01" name="integrante01" type="text" class="input-block-level" placeholder="Digite o nome do Integrante 01" value="">
+    				    </div>
+                        <div class="control-group">
+                            <label for="email01">E-mail Integrante 01</label>
+                            <input id="email01" name="email01" type="text" class="input-block-level" placeholder="Digite o e-mail do integrante 01" value="">
+                        </div>
+                    </div>
+                    <div class="well">
+                        <div class="control-group">
+                            <label for="integrante02">Integrante 02</label>
+                            <input id="integrante02" name="integrante02" type="text" class="input-block-level" placeholder="Digite o nome do Integrante 02" value="">
+                        </div>
+                        <div class="control-group">
+                            <label for="email02">E-mail Integrante 02</label>
+                            <input id="email02" name="email02" type="text" class="input-block-level" placeholder="Digite o e-mail do integrante 02" value="">
+                        </div>
+                    </div>
+                    <div class="well">
+                        <div class="control-group">
+                            <label for="integrante03">Integrante 03</label>
+                            <input id="integrante03" name="integrante03" type="text" class="input-block-level" placeholder="Digite o nome do Integrante 03" value="">
+                        </div>
+                        <div class="control-group">
+                            <label for="email03">E-mail Integrante 03</label>
+                            <input id="email03" name="email03" type="text" class="input-block-level" placeholder="Digite o e-mail do integrante 03" value="">
+                        </div>
+                    </div>
+                    <div class="well">
+                        <div class="control-group">
+                            <label for="integrante04">Integrante 04 - <span style="color:red;">Opcional</span></label>
+                            <input id="integrante04" name="integrante04" type="text" class="input-block-level" placeholder="Digite o nome do Integrante 04" value="">
+                        </div>
+                        <div class="control-group">
+                            <label for="email04">E-mail Integrante 04</label>
+                            <input id="email04" name="email04" type="text" class="input-block-level" placeholder="Digite o e-mail do integrante 04" value="">
+                        </div>
+                    </div>
+				    <div class="row-fluid">
+				    	<button type="submit" class="span12 btn">Enviar Dados</button>
+					</div>
+				  </fieldset>
+				</form>
+        	</div>
+        	<div class="span6">
+                <h3>Regras</h3>
+                <hr>
+                <p>A maratona de Programação do EATI é uma competição na qual os participantes devem tentar solucionar o maior número de problemas no menor tempo, através do desenvolvimento de programas em C, Pascal ou Java.</p>
+                <p>Os times são compostos por três integrantes (alunos e ex-alunos de cursos técnicos, de graduação e pós-graduação na área de Computação e afins), que tentarão resolver durante 4 horas o maior número possível dos 8 ou mais problemas que são entregues no início da competição.
+                Os competidores têm à sua disposição apenas um computador e material impresso (livros, listagens, manuais). Os problemas podem ser resolvidos em C, C++ ou Java, através dos compiladores gcc, g++, javac e IDEs Codeblocks, Geany, Eclipse e Netbeans.</p>
+                <p>No início da competição os competidores recebem os problemas que devem ser resolvidos. Nos enunciados dos problemas constam exemplos dos dados dos problemas, mas eles não têm acesso às instâncias testadas pelos juízes. A cada submissão incorreta de um problema é atribuída uma penalidade de tempo. O time que conseguir resolver o maior número de problemas no menor tempo acumulado é declarado o vencedor.</p>
+                <p>O ambiente de correção/julgamento das soluções enviadas pela equipe será o BOCA Online Contest Administrator.</p>
+                <p>A Maratona de Programação do EATI será no <b>sábado, dia 23/11</b>, iniciando com uma sessão de aquecimento às 8:00, onde as equipes podem conhecer o ambiente de programação e submissão dos programas, e logo após, <b>das 9:00 às 13:00 será a competição.</b></p>
+                <p>Para participar da maratona de programação os 3 componentes da equipe (+1 reserva, opcional) devem estar inscritos no EATI e não há custo adicional.</p>
+                <p>Para fazer a inscrição na Maratona de Programação um membro da equipe deve preencher o formulário informando o nome da Equipe e o nome dos 3 titulares + 1 reserva (opcional) que participarão da maratona de programação.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
